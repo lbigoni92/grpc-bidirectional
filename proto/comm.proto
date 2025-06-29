@@ -1,0 +1,15 @@
+
+syntax = "proto3";
+
+package comm;
+
+service Communicator {
+  rpc Chat(stream Message) returns (stream Message);
+}
+option go_package = "grpc-bidirectional/proto;proto";
+
+message Message {
+  string sender = 1;
+  string content = 2;
+  int64 timestamp = 3;
+}
